@@ -4,11 +4,11 @@ import data from './data.js';
 import userRouter from './routers/userRouter.js';
 
 const app = express();
-// mongoose.connect('mongodb+srv://danuka:Pt7m0184@nodelearn.guvpo.mongodb.net/amazon?retryWrites=true&w=majority', {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useUnifiedTopology: true
-// });
+
+mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://danuka:Pt7m0184@nodelearn.guvpo.mongodb.net/amazon?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 app.get('/api/products/:id', (req, res) => {
   const product = data.products.find((x) => x._id === req.params.id);
